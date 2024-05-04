@@ -1,9 +1,9 @@
 # Eidolon Chatbot Recipe
 
-This project shows an example of a multi-llm multimedia enabled chatbot. Not all llms support multi-media, 
-let allone mid conversation brain-boosts. This can cause issues when swapping out components. Thankfully 
-Eidolon's AgentProcessingUnit abstracts away those concepts so you can enable multimedia, json output, and 
-function calling on even the smallest llm.
+This project shows an example of a multi-llm multimedia enabled chatbot. Not all LLMs support multimedia, let alone 
+mid-conversation brain-boosts. This can cause issues when swapping out components. Thankfully Eidolon's 
+AgentProcessingUnit abstracts away those concepts so you can enable multimedia, json output, and function calling on 
+even the smallest llm.
 
 ## Core Concepts
 1. Customizing the AgentProcessingUnit
