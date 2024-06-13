@@ -20,7 +20,7 @@ First you need to clone the project and navigate to the project directory:
 
 ```bash
 git clone https://github.com/eidolon-ai/eidolon-chatbot.git
-cd agent-machine
+cd eidolon-chatbot
 ```
 
 Then run the server in dev mode, use the following command:
