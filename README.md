@@ -58,15 +58,6 @@ To use kubernetes for local development, you will need to have the following ins
 - [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
 - [Helm](https://helm.sh/docs/intro/install/)
 
-Clone the project and navigate to the project directory:
-
-```bash
-git clone https://github.com/eidolon-ai/agent-machine.git
-cd agent-machine
-```
-
-### Installation
-
 If you are using Minikube, run the following commands before any make commands:
 
 ```bash
