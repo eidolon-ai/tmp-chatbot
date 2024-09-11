@@ -3,7 +3,7 @@ DOCKER_REPO_NAME := $(if $(DOCKER_REPO_URL),$(DOCKER_REPO_URL),my-eidolon-projec
 VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $$2}')
 REQUIRED_ENVS := OPENAI_API_KEY
 
-.PHONY: serve serve-dev check docker-serve _docker-serve .env sync update docker-build docker-push pull-webui k8s-operator check-kubectl check-helm check-cluster-running verify-k8s-permissions check-install-operator k8s-serve k8s-env
+.PHONY: serve serve-dev check docker-serve _docker-serve .env sync update docker-build docker-push pull-webui k8s-operator check-kubectl check-helm check-cluster-running verify-k8s-permissions check-install-operator k8s-serve k8s-env test
 
 ARGS ?=
 
