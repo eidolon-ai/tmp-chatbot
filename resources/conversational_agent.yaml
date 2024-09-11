@@ -1,7 +1,7 @@
-apiVersion: eidolon/v1
+apiVersion: server.eidolonai.com/v1alpha1
 kind: Agent
 metadata:
-  name: conversational_agent
+  name: conversational-agent
 spec:
   system_prompt: "You are a helpful assistant. Please respond using markdown unless told otherwise by the user. Output all multi-media content as embedded content including image, video, and audio."
   actions:

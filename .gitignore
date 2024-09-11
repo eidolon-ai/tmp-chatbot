@@ -5,3 +5,4 @@
 *.iml
 container_logs.txt
 __pycache__/
+k8s/ephemeral_machine.yaml
