@@ -1,8 +1,9 @@
-DOCKER_REPO_NAME := my-eidolon-project
+DOCKER_REPO_URL ?=
+DOCKER_REPO_NAME := $(if $(DOCKER_REPO_URL),$(DOCKER_REPO_URL),my-eidolon-project)
 VERSION := $(shell grep -m 1 '^version = ' pyproject.toml | awk -F '"' '{print $$2}')
 REQUIRED_ENVS := OPENAI_API_KEY
 
-.PHONY: serve serve-dev check docker-serve _docker-serve .env sync update docker-build pull-webui k8s-operator check-kubectl check-helm check-cluster-running verify-k8s-permissions check-install-operator k8s-serve k8s-env test
+.PHONY: serve serve-dev check docker-serve _docker-serve .env sync update docker-build docker-push pull-webui k8s-operator check-kubectl check-helm check-cluster-running verify-k8s-permissions check-install-operator k8s-serve k8s-env
 
 ARGS ?=
 
@@ -125,7 +126,10 @@ k8s-serve: k8s-server k8s-webui
 		--all-containers=true \
 		--prefix=true
 
-k8s-server: check-cluster-running docker-build k8s-env
+k8s-server: check-cluster-running docker-build docker-push k8s-env
+	@sed -e 's|image: .*|image: ${DOCKER_REPO_NAME}:latest|' \
+	     -e 's|imagePullPolicy: .*|imagePullPolicy: $(if $(DOCKER_REPO_URL),Always,Never)|' \
+	     k8s/ephemeral_machine.yaml > k8s/ephemeral_machine.yaml.tmp && mv k8s/ephemeral_machine.yaml.tmp k8s/ephemeral_machine.yaml
 	@kubectl apply -f k8s/ephemeral_machine.yaml
 	- @kubectl apply -f resources/
 	@kubectl apply -f k8s/eidolon-ext-service.yaml
@@ -146,6 +150,11 @@ k8s-env: .env
 
 docker-build: poetry.lock Dockerfile
 	@docker build -t $(DOCKER_REPO_NAME):latest .
+
+docker-push:
+	@if [ -n "$(DOCKER_REPO_URL)" ]; then \
+		docker push $(DOCKER_REPO_NAME):latest; \
+	fi
 
 pull-webui:
 	@if ! docker image inspect eidolonai/webui:latest > /dev/null 2>&1; then \
