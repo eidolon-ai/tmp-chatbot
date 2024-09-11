@@ -4,7 +4,7 @@ from eidolon_ai_client.client import Agent
 
 @pytest.fixture
 def agent():
-    return Agent.get("conversational_agent")
+    return Agent.get("conversational-agent")
 
 
 @pytest.mark.vcr()
