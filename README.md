@@ -1,6 +1,13 @@
-# Eidolon Agent Machine Template
+# Eidolon Chatbot Recipe
 
-This project serves as a template for individuals interested in building agents with Eidolon.
+This project shows an example of a multi-llm multimedia enabled chatbot. Not all LLMs support multimedia, let alone 
+mid-conversation brain-boosts. This can cause issues when swapping out components. Thankfully Eidolon's 
+AgentProcessingUnit abstracts away those concepts so you can enable multimedia, json output, and function calling on 
+even the smallest llm.
+
+## Core Concepts
+1. Customizing the AgentProcessingUnit
+2. Running the UI
 
 ## Directory Structure
 
@@ -12,8 +19,8 @@ This project serves as a template for individuals interested in building agents 
 First you need to clone the project and navigate to the project directory:
 
 ```bash
-git clone https://github.com/eidolon-ai/agent-machine.git
-cd agent-machine
+git clone https://github.com/eidolon-ai/eidolon-chatbot.git
+cd eidolon-chatbot
 ```
 
 Then run the server using docker, use the following command:
