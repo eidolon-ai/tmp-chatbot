@@ -9,8 +9,8 @@ The `k8s-operator` target installs the Eidolon operator in your k8s cluster. Thi
 * It first checks if helm and kubectl are installed
 * It then checks the permissions of the current user to see if they can install the operator by running `./verify_k8s`
 * If you are NOT using minikube locally set the environment variable `DOCKER_REPO_URL` to the proper location.
-  * Linux/OSX: `export DOCKER_REPO_URL=localhost:5000/cbusha-backend`
-  * Windows (Powershell): `$env:DOCKER_REPO_URL="localhost:5000/cbusha-backend"`
+  * Linux/OSX: `export DOCKER_REPO_URL=<ip>:5000/my-eidolon-project`
+  * Windows (Powershell): `$env:DOCKER_REPO_URL="<ip>:5000/my-eidolon-project"`
 * It then checks if the operator is already installed, if not, it installs the operator by running
   * `helm repo add eidolon https://eidolonai.com/charts`
   * `helm install eidolon eidolon/eidolon-operator-chart`
