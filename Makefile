@@ -160,3 +160,6 @@ pull-webui:
 	@if ! docker image inspect eidolonai/webui:latest > /dev/null 2>&1; then \
 		docker pull eidolonai/webui:latest; \
 	fi
+
+k8s-clean:
+	@kubectl delete -f k8s/ephemeral_machine.yaml -f resources/ -f k8s/eidolon-ext-service.yaml -f k8s/webui.yaml
